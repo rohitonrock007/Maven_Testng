@@ -3,6 +3,7 @@ package testcases;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -32,6 +33,7 @@ public class BaseClass {
     public void DataSetUP() throws IOException {
     	
     	
+    	
     	FileInputStream fis = new FileInputStream("ExcelData.xlsx");
     	wbook = new XSSFWorkbook(fis);
 		sheet = wbook.getSheet("Sheet1");
@@ -52,7 +54,10 @@ public class BaseClass {
     
     
 	@BeforeMethod
-	public void setup() {
+	public void setup(Method method) {
+		
+		test = report.startTest(method.getName());
+		
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
 		
@@ -68,6 +73,7 @@ public class BaseClass {
 	@AfterMethod
     public void teardown() {
     	
+		report.endTest(test);
     	driver.quit();
 		
 		
