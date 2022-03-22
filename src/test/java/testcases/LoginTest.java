@@ -70,7 +70,7 @@ public class LoginTest extends BaseClass {
 	public void LoginSucessTest() {
 //		test = report.startTest("LoginSucessTest");
 		LoginPage login = new LoginPage();
-		login.LoginFunction("r.rohitsharma92@gmail.com", "Asha92@@@");
+		login.LoginFunction("r.rohitsharma92@gmail.com", "**********");
 		
 //		report.endTest(test);
 
